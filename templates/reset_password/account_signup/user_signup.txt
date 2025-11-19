@@ -1,0 +1,9 @@
+Hi {{name}},
+
+{{message}}
+
+{{link}}
+
+{{date}}
+
+{{domain}}

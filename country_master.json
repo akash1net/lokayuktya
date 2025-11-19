@@ -1,0 +1,848 @@
+[
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Afghanistan",
+      "iso_code": "AF",
+      "phone_code": "+93",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Albania",
+      "iso_code": "AL",
+      "phone_code": "+355",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Algeria",
+      "iso_code": "DZ",
+      "phone_code": "+213",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Andorra",
+      "iso_code": "AD",
+      "phone_code": "+376",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Angola",
+      "iso_code": "AO",
+      "phone_code": "+244",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Argentina",
+      "iso_code": "AR",
+      "phone_code": "+54",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Armenia",
+      "iso_code": "AM",
+      "phone_code": "+374",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Australia",
+      "iso_code": "AU",
+      "phone_code": "+61",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Austria",
+      "iso_code": "AT",
+      "phone_code": "+43",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Azerbaijan",
+      "iso_code": "AZ",
+      "phone_code": "+994",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Bahamas",
+      "iso_code": "BS",
+      "phone_code": "+1-242",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Bahrain",
+      "iso_code": "BH",
+      "phone_code": "+973",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Bangladesh",
+      "iso_code": "BD",
+      "phone_code": "+880",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Barbados",
+      "iso_code": "BB",
+      "phone_code": "+1-246",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Belarus",
+      "iso_code": "BY",
+      "phone_code": "+375",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Belgium",
+      "iso_code": "BE",
+      "phone_code": "+32",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Belize",
+      "iso_code": "BZ",
+      "phone_code": "+501",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Benin",
+      "iso_code": "BJ",
+      "phone_code": "+229",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Bhutan",
+      "iso_code": "BT",
+      "phone_code": "+975",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Bolivia",
+      "iso_code": "BO",
+      "phone_code": "+591",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Bosnia and Herzegovina",
+      "iso_code": "BA",
+      "phone_code": "+387",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Botswana",
+      "iso_code": "BW",
+      "phone_code": "+267",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Brazil",
+      "iso_code": "BR",
+      "phone_code": "+55",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Brunei",
+      "iso_code": "BN",
+      "phone_code": "+673",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Bulgaria",
+      "iso_code": "BG",
+      "phone_code": "+359",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Burkina Faso",
+      "iso_code": "BF",
+      "phone_code": "+226",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Burundi",
+      "iso_code": "BI",
+      "phone_code": "+257",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Cambodia",
+      "iso_code": "KH",
+      "phone_code": "+855",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Cameroon",
+      "iso_code": "CM",
+      "phone_code": "+237",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Canada",
+      "iso_code": "CA",
+      "phone_code": "+1",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Chad",
+      "iso_code": "TD",
+      "phone_code": "+235",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Chile",
+      "iso_code": "CL",
+      "phone_code": "+56",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "China",
+      "iso_code": "CN",
+      "phone_code": "+86",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Colombia",
+      "iso_code": "CO",
+      "phone_code": "+57",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Comoros",
+      "iso_code": "KM",
+      "phone_code": "+269",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Congo",
+      "iso_code": "CG",
+      "phone_code": "+242",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Costa Rica",
+      "iso_code": "CR",
+      "phone_code": "+506",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Croatia",
+      "iso_code": "HR",
+      "phone_code": "+385",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Cuba",
+      "iso_code": "CU",
+      "phone_code": "+53",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Cyprus",
+      "iso_code": "CY",
+      "phone_code": "+357",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Czech Republic",
+      "iso_code": "CZ",
+      "phone_code": "+420",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Denmark",
+      "iso_code": "DK",
+      "phone_code": "+45",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Djibouti",
+      "iso_code": "DJ",
+      "phone_code": "+253",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Dominica",
+      "iso_code": "DM",
+      "phone_code": "+1-767",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Dominican Republic",
+      "iso_code": "DO",
+      "phone_code": "+1-809",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Ecuador",
+      "iso_code": "EC",
+      "phone_code": "+593",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Egypt",
+      "iso_code": "EG",
+      "phone_code": "+20",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "El Salvador",
+      "iso_code": "SV",
+      "phone_code": "+503",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Equatorial Guinea",
+      "iso_code": "GQ",
+      "phone_code": "+240",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Eritrea",
+      "iso_code": "ER",
+      "phone_code": "+291",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Estonia",
+      "iso_code": "EE",
+      "phone_code": "+372",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Eswatini",
+      "iso_code": "SZ",
+      "phone_code": "+268",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Ethiopia",
+      "iso_code": "ET",
+      "phone_code": "+251",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Fiji",
+      "iso_code": "FJ",
+      "phone_code": "+679",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Finland",
+      "iso_code": "FI",
+      "phone_code": "+358",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "France",
+      "iso_code": "FR",
+      "phone_code": "+33",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Gabon",
+      "iso_code": "GA",
+      "phone_code": "+241",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Gambia",
+      "iso_code": "GM",
+      "phone_code": "+220",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Georgia",
+      "iso_code": "GE",
+      "phone_code": "+995",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Germany",
+      "iso_code": "DE",
+      "phone_code": "+49",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Ghana",
+      "iso_code": "GH",
+      "phone_code": "+233",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Greece",
+      "iso_code": "GR",
+      "phone_code": "+30",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Greenland",
+      "iso_code": "GL",
+      "phone_code": "+299",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Guatemala",
+      "iso_code": "GT",
+      "phone_code": "+502",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Guinea",
+      "iso_code": "GN",
+      "phone_code": "+224",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Guyana",
+      "iso_code": "GY",
+      "phone_code": "+592",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Haiti",
+      "iso_code": "HT",
+      "phone_code": "+509",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Honduras",
+      "iso_code": "HN",
+      "phone_code": "+504",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Hong Kong",
+      "iso_code": "HK",
+      "phone_code": "+852",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Hungary",
+      "iso_code": "HU",
+      "phone_code": "+36",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Iceland",
+      "iso_code": "IS",
+      "phone_code": "+354",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "India",
+      "iso_code": "IN",
+      "phone_code": "+91",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Indonesia",
+      "iso_code": "ID",
+      "phone_code": "+62",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Iran",
+      "iso_code": "IR",
+      "phone_code": "+98",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Iraq",
+      "iso_code": "IQ",
+      "phone_code": "+964",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Ireland",
+      "iso_code": "IE",
+      "phone_code": "+353",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Israel",
+      "iso_code": "IL",
+      "phone_code": "+972",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Italy",
+      "iso_code": "IT",
+      "phone_code": "+39",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Jamaica",
+      "iso_code": "JM",
+      "phone_code": "+1-876",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Japan",
+      "iso_code": "JP",
+      "phone_code": "+81",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Jordan",
+      "iso_code": "JO",
+      "phone_code": "+962",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Kazakhstan",
+      "iso_code": "KZ",
+      "phone_code": "+7",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Kenya",
+      "iso_code": "KE",
+      "phone_code": "+254",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Kuwait",
+      "iso_code": "KW",
+      "phone_code": "+965",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Kyrgyzstan",
+      "iso_code": "KG",
+      "phone_code": "+996",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Laos",
+      "iso_code": "LA",
+      "phone_code": "+856",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Latvia",
+      "iso_code": "LV",
+      "phone_code": "+371",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Lebanon",
+      "iso_code": "LB",
+      "phone_code": "+961",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Lesotho",
+      "iso_code": "LS",
+      "phone_code": "+266",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Liberia",
+      "iso_code": "LR",
+      "phone_code": "+231",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Libya",
+      "iso_code": "LY",
+      "phone_code": "+218",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Liechtenstein",
+      "iso_code": "LI",
+      "phone_code": "+423",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Lithuania",
+      "iso_code": "LT",
+      "phone_code": "+370",
+      "is_active": true
+    }
+  },
+  {
+    "model": "coredata.country",
+    "fields": {
+      "name": "Luxembourg",
+      "iso_code": "LU",
+      "phone_code": "+352",
+      "is_active": true
+    }
+  }
+]
