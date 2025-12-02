@@ -54,10 +54,52 @@ class ComplaintViewSet(viewsets.GenericViewSet,
 
     @swagger_auto_schema(auto_schema=None)  # hides in Swagger
     def create(self, request, *args, **kwargs):
+        print("akash sharma",request.data)
         return super().create(request, *args, **kwargs)
     
     
 
+    # @swagger_auto_schema(
+    #     method="post",
+    #     request_body=EvidenceUploadSerializer,
+    #     responses={
+    #         200: openapi.Response(
+    #             description="Evidence uploaded successfully"
+    #         )
+    #     }
+    # )
+    # @action(detail=False, methods=["POST"], url_path="upload-evidence")
+    # def upload_evidence(self, request):
+    #     try:
+    #         serializer = EvidenceUploadSerializer(data=request.data)
+    #         serializer.is_valid(raise_exception=True)
+    #         evidence = serializer.save()
+
+    #         return Response({
+    #             "message": "Uploaded",
+    #             "evidence_id": evidence.id,
+    #             "file_url": request.build_absolute_uri(evidence.evidence_file.url)
+    #         })
+
+    #     except Exception as e:
+    #         return Response({"error": str(e)}, status=400)
+        
+        
+   
+
+        
+
+        
+
+
+class EvidenceViewSet(viewsets.GenericViewSet):
+    queryset = EvidenceDocument.objects.all()
+    serializer_class = EvidenceUploadSerializer
+    parser_classes = [MultiPartParser, FormParser]
+
+    # ----------------------
+    # 1️⃣ UPLOAD EVIDENCE
+    # ----------------------
     @swagger_auto_schema(
         method="post",
         request_body=EvidenceUploadSerializer,
@@ -69,17 +111,41 @@ class ComplaintViewSet(viewsets.GenericViewSet,
     )
     @action(detail=False, methods=["POST"], url_path="upload-evidence")
     def upload_evidence(self, request):
-        serializer = EvidenceUploadSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        evidence = serializer.save()
+        try:
+            serializer = EvidenceUploadSerializer(data=request.data)
+            serializer.is_valid(raise_exception=True)
+            evidence = serializer.save()
 
-        return Response({
-            "message": "Uploaded",
-            "evidence_id": evidence.id,
-            "file_url": request.build_absolute_uri(evidence.evidence_file.url)
-        })
+            return Response({
+                "message": "Uploaded",
+                "evidence_id": evidence.id,
+                "file_url": request.build_absolute_uri(evidence.evidence_file.url)
+            })
+
+        except Exception as e:
+            return Response({"error": str(e)}, status=400)
+
+    # ----------------------
+    # 2️⃣ DELETE EVIDENCE
+    # ----------------------
+    @swagger_auto_schema(
+        method="delete",
+        responses={200: "Evidence deleted successfully"}
+    )
+    @action(detail=True, methods=['delete'], url_path='')
+    def delete(self, request, pk=None):
+        """Delete evidence by ID (pk = evidence_id)"""
+
+        try:
+            evidence = self.get_object()
+        except:
+            return Response({"error": "Evidence not found"}, status=404)
+
+        evidence.delete()
+        return Response({"message": "Deleted successfully"}, status=200)
 
 
+ 
     
 
 
@@ -131,4 +197,121 @@ class DocumentsViewSet(viewsets.ModelViewSet):
             "message": f"{document_type} download link generated",
             "download_url": download_url
         }, status=200)
+    
+
+
+
+class FollowUpDocumentViewSet(viewsets.GenericViewSet):
+    queryset = FollowUpDocument.objects.all()
+    serializer_class = FollowUpUploadSerializer
+    parser_classes = [MultiPartParser, FormParser]
+
+    # ------------------------------
+    # UPLOAD FOLLOW-UP DOCUMENT
+    # ------------------------------
+    @swagger_auto_schema(
+        method="post",
+        request_body=FollowUpUploadSerializer,
+        responses={
+            200: openapi.Response(description="Follow-up document uploaded successfully")
+        }
+    )
+    @action(detail=False, methods=["POST"], url_path="upload")
+    def upload_document(self, request):
+        try:
+            serializer = FollowUpUploadSerializer(data=request.data)
+            serializer.is_valid(raise_exception=True)
+            document = serializer.save()
+
+            return Response({
+                "message": "Uploaded successfully",
+                "document_id": document.id,
+                "file_type": document.file_type,
+                "file_url": request.build_absolute_uri(document.evidence_file.url)
+            }, status=200)
+
+        except Exception as e:
+            return Response({"error": str(e)}, status=400)
+
+    # ------------------------------
+    # DELETE FOLLOW-UP DOCUMENT
+    # ------------------------------
+    @swagger_auto_schema(
+        method="delete",
+        responses={200: "Document deleted successfully"}
+    )
+    @action(detail=True, methods=['delete'], url_path='')
+    def delete_document(self, request, pk=None):
+        """Delete follow-up document by ID (pk=document_id)"""
+
+        try:
+            document = self.get_object()
+        except:
+            return Response({"error": "Document not found"}, status=404)
+
+        document.delete()
+        return Response({"message": "Deleted successfully"}, status=200)
+    
+
+
+
+
+class ComplaintFollowUpViewSet(viewsets.GenericViewSet):
+    serializer_class = FollowUpLinkSerializer
+
+    @swagger_auto_schema(
+        method="post",
+        request_body=FollowUpLinkSerializer,
+        responses={200: "Follow-up added successfully"}
+    )
+    @action(detail=False, methods=['post'], url_path='add-followup')
+    def add_followup(self, request):
+        serializer = FollowUpLinkSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        data = serializer.save()
+
+        return Response({
+            "message": "Follow-up added successfully",
+            "note_id": data["note_id"],
+            "attached_document_ids": data["attached_documents"]
+        }, status=200)
+
+
+
+
+class ComplaintTrackingView(viewsets.GenericViewSet):
+    queryset = Complaint.objects.all()
+    serializer_class = ComplaintTrackingSerializer
+
+    @swagger_auto_schema(
+        method="get",
+        manual_parameters=[
+            openapi.Parameter(
+                'complaint_no',
+                openapi.IN_QUERY,
+                description="Enter Complaint Number",
+                type=openapi.TYPE_STRING,
+                required=True
+            )
+        ],
+        responses={200: "Complaint Full Details"}
+    )
+    @action(detail=False, methods=["GET"], url_path="track")
+    def track_complaint(self, request):
+        complaint_no = request.GET.get("complaint_no")
+
+        if not complaint_no:
+            return Response({"error": "complaint_no is required"}, status=400)
+
+        try:
+            complaint = Complaint.objects.get(complaint_no=complaint_no)
+        except Complaint.DoesNotExist:
+            return Response({"error": "Complaint not found"}, status=404)
+
+        serializer = ComplaintTrackingSerializer(complaint, context={"request": request})
+        return Response(serializer.data, status=200)
+
+
+
+
 

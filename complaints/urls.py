@@ -9,6 +9,14 @@ router.register('documents', DocumentsViewSet, basename='document')
 router.register('complaint-register', ComplaintViewSet, basename='complaint-register')
 router.register('designation', DesignationViewSet, basename='designations')
 router.register('public-servient', PublicServientViewSet, basename='public-servients')
+router.register('evidence', EvidenceViewSet, basename='evidence')
+router.register('follow-up', FollowUpDocumentViewSet, basename='follow-up')
+router.register('follow-link', ComplaintFollowUpViewSet, basename='follow-link')
+router.register('complaint-tracking', ComplaintTrackingView, basename='complaint-tracking')
+
+
+
+
 
 
 urlpatterns = [

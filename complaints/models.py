@@ -24,7 +24,6 @@ class Documents(models.Model):
         ('Affidavit', 'affidavit'),
         
     )
-
     document_type = models.CharField(
         max_length=50,
         choices=DOCUMENT_TYPES,
@@ -114,7 +113,6 @@ class PublicFunctionary(models.Model):
         return f"Functionary #{self.functionari_name} - {self.id}"  
         
 
-
 class Complaint(models.Model):
     complaint_no = models.CharField(
         max_length=30,
@@ -155,6 +153,7 @@ class Complaint(models.Model):
         max_length=50,
         choices=[
             ('pending', 'Pending'),
+            ('Review', 'Review'),
             ('in_progress', 'In Progress'),
             ('resolved', 'Resolved'),
             ('rejected', 'Rejected'),
@@ -176,7 +175,7 @@ class Complaint(models.Model):
         blank=True, null=True,
         help_text="Digital signature or uploaded image of signature."
     )
-    affidavit = models.ImageField(
+    affidavit = models.FileField(
         upload_to='complaints/affidavit/',
         blank=True, null=True,
         help_text="Digital affidavit or uploaded image of Affidavit."
@@ -186,7 +185,7 @@ class Complaint(models.Model):
         default=False,
         help_text="Verification checkbox (True/False)."
     )
-    verify_mob = models.BooleanField(
+    is_affidavit = models.BooleanField(
         default=False,
         help_text="User agrees to the verify Mobile."
     )
@@ -261,6 +260,55 @@ class EvidenceDocument(models.Model):
 
     def __str__(self):
         return f"Evidence #{self.id} ({self.file_type})"
+    
+
+class FollowUpNote(models.Model):
+    complaint = models.ForeignKey(
+        Complaint,
+        on_delete=models.SET_NULL,   # complaint bane pe attach karenge
+        null=True,
+        blank=True,
+        related_name='followup_note'
+    )
+    description = models.TextField(blank=True, null=True)
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+
+
+class FollowUpDocument(models.Model):
+    complaint = models.ForeignKey(
+        Complaint,
+        on_delete=models.SET_NULL,   # complaint bane pe attach karenge
+        null=True,
+        blank=True,
+        related_name='followup_documents'
+    )
+    evidence_file = models.FileField(upload_to='complaints/followup/')
+    file_type = models.CharField(max_length=50, blank=True, null=True)
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+    def save(self, *args, **kwargs):
+        if self.evidence_file:
+            mime_type, _ = mimetypes.guess_type(self.evidence_file.name)
+            if mime_type:
+                if mime_type.startswith('image'):
+                    self.file_type = 'image'
+                elif mime_type.startswith('video'):
+                    self.file_type = 'video'
+                elif mime_type.startswith('audio'):
+                    self.file_type = 'audio'
+                elif mime_type == 'application/pdf':
+                    self.file_type = 'pdf'
+                else:
+                    self.file_type = 'other'
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f"FollowUp #{self.id} ({self.file_type})"
+
+    
+
+
+
+
 
 
 
