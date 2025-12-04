@@ -474,10 +474,26 @@ class FollowUpNoteDetailSerializer(serializers.ModelSerializer):
 
 
 
+class FollowUpDocumentSerializer(serializers.ModelSerializer):
+    file_url = serializers.SerializerMethodField()
+
+    class Meta:
+        model = FollowUpDocument
+        fields = ["id", "file_type", "file_url"]
+
+    def get_file_url(self, obj):
+        request = self.context.get("request")
+        if obj.evidence_file:
+            if request:
+                return request.build_absolute_uri(obj.evidence_file.url)
+            return obj.evidence_file.url
+        return None
+
+
 
 class ComplaintTrackingSerializer(serializers.ModelSerializer):
-    documents = ComplaintDocumentListSerializer(many=True, read_only=True)
-    evidences = EvidenceListSerializer(many=True, read_only=True)
+    respondent = RespondentSerializer(read_only=True)
+    evidences = serializers.SerializerMethodField()
     followup_note = FollowUpNoteDetailSerializer(many=True, read_only=True)
 
     class Meta:
@@ -486,19 +502,32 @@ class ComplaintTrackingSerializer(serializers.ModelSerializer):
             "id",
             "complaint_no",
             "user",
-            "complaint_capacity",
-            "nationality",
             "status",
             "complaint_text",
             "respondent",
-            "signature",
-            "affidavit",
             "created_at",
-            "updated_at",
-            "documents",
             "evidences",
             "followup_note"
         ]
+
+    def get_evidences(self, obj):
+        # normal evidences
+        evidences = EvidenceListSerializer(
+            obj.evidences.all(),
+            many=True,
+            context=self.context
+        ).data
+
+        # follow-up evidences
+        followup_docs = FollowUpDocumentSerializer(
+            obj.followup_documents.all(),
+            many=True,
+            context=self.context
+        ).data
+
+        return evidences + followup_docs
+
+
 
 
 

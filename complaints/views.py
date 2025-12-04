@@ -13,6 +13,7 @@ import os
 from rest_framework.response import Response
 from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
+from django.db import IntegrityError
 
 
 
@@ -225,7 +226,7 @@ class FollowUpDocumentViewSet(viewsets.GenericViewSet):
 
             return Response({
                 "message": "Uploaded successfully",
-                "document_id": document.id,
+                "evidence_id": document.id,
                 "file_type": document.file_type,
                 "file_url": request.build_absolute_uri(document.evidence_file.url)
             }, status=200)
@@ -264,11 +265,19 @@ class ComplaintFollowUpViewSet(viewsets.GenericViewSet):
         request_body=FollowUpLinkSerializer,
         responses={200: "Follow-up added successfully"}
     )
+
     @action(detail=False, methods=['post'], url_path='add-followup')
     def add_followup(self, request):
         serializer = FollowUpLinkSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        data = serializer.save()
+
+        try:
+            data = serializer.save()
+        except IntegrityError:
+            return Response({
+                "statusCode": 400,
+                "message": "Invalid complaint_id. Complaint does not exist."
+            }, status=400)
 
         return Response({
             "message": "Follow-up added successfully",
@@ -301,15 +310,22 @@ class ComplaintTrackingView(viewsets.GenericViewSet):
         complaint_no = request.GET.get("complaint_no")
 
         if not complaint_no:
-            return Response({"error": "complaint_no is required"}, status=400)
+            return Response({"message": "complaint_no is required"}, status=400)
 
         try:
             complaint = Complaint.objects.get(complaint_no=complaint_no)
         except Complaint.DoesNotExist:
-            return Response({"error": "Complaint not found"}, status=404)
+            return Response(
+                    {
+                        "statusCode": 400,
+                        "message": "Complaint not found",
+                        "show_message": "<h2>No Complaints Found</h2><p>The entered complaint number does not match any records.</p>"
+                    },
+                    status=200
+                )
 
         serializer = ComplaintTrackingSerializer(complaint, context={"request": request})
-        return Response(serializer.data, status=200)
+        return Response({"res_data": serializer.data,"statusCode": 200, "message": "Complaint found successfully", }, status=200)
 
 
 
