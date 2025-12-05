@@ -18,6 +18,7 @@ from django.db import IntegrityError
 
 
 
+
 class PublicFunctionaryViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
     """
     List all active Public Functionaries
@@ -288,6 +289,12 @@ class ComplaintFollowUpViewSet(viewsets.GenericViewSet):
 
 
 
+import pdfkit
+from django.http import HttpResponse
+from django.template.loader import render_to_string
+
+
+
 class ComplaintTrackingView(viewsets.GenericViewSet):
     queryset = Complaint.objects.all()
     serializer_class = ComplaintTrackingSerializer
@@ -326,6 +333,80 @@ class ComplaintTrackingView(viewsets.GenericViewSet):
 
         serializer = ComplaintTrackingSerializer(complaint, context={"request": request})
         return Response({"res_data": serializer.data,"statusCode": 200, "message": "Complaint found successfully", }, status=200)
+    
+
+
+    @swagger_auto_schema(
+        method="get",
+        manual_parameters=[
+            openapi.Parameter(
+                'complaint_no',
+                openapi.IN_QUERY,
+                description="Enter Complaint Number to download PDF",
+                type=openapi.TYPE_STRING,
+                required=True
+            )
+        ],
+        responses={200: "Complaint PDF File"}
+        )
+    @action(detail=False, methods=["GET"], url_path="download-pdf")
+    def download_pdf(self, request):
+        complaint_no = request.GET.get("complaint_no")
+
+        if not complaint_no:
+            return HttpResponse("complaint_no is required")
+
+        try:
+            complaint = Complaint.objects.get(complaint_no=complaint_no)
+        except Complaint.DoesNotExist:
+            return HttpResponse("Complaint not found")
+
+        # serialize data
+        serializer = ComplaintTrackingSerializer(complaint, context={"request": request})
+        data = serializer.data
+
+        # Build absolute URLs for PDF
+        # ----------------------------------------
+        # Fix: Evidences absolute URL
+        if "evidences" in data:
+            for ev in data["evidences"]:
+                if ev.get("file_url"):
+                    ev["file_url"] = request.build_absolute_uri(ev["file_url"])
+
+        # Fix: Follow-up file URLs (if any)
+        if "followups" in data:
+            for fu in data["followups"]:
+                if fu.get("file_url"):
+                    fu["file_url"] = request.build_absolute_uri(fu["file_url"])
+        # ----------------------------------------
+
+        # render HTML
+        html = render_to_string("complaint_pdf.html", {
+            "data": data,
+        })
+
+        print(data)
+        path_wkhtmltopdf = r"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe"
+
+        config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
+
+        pdf = pdfkit.from_string(html, False, configuration=config)
+
+      
+
+        # return PDF
+        response = HttpResponse(pdf, content_type="application/pdf")
+        response["Content-Disposition"] = f"attachment; filename=Complaint_{complaint_no}.pdf"
+        return response
+
+
+    
+
+
+
+
+
+
 
 
 
